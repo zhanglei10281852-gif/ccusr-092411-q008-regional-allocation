@@ -3,18 +3,42 @@
     "event_id": "evt-001",
     "event_type": "round.opened",
     "aggregate_id": "round-001",
-    "occurred_at": "2026-09-21T08:00:00+08:00"
+    "occurred_at": "2026-09-24T08:00:00+08:00"
   },
   {
     "event_id": "evt-002",
-    "event_type": "allocation.published",
-    "aggregate_id": "alloc-hb-001",
-    "occurred_at": "2026-09-22T09:00:00+08:00"
+    "event_type": "allocation.simulated",
+    "aggregate_id": "sim-round-001-01",
+    "occurred_at": "2026-09-24T08:30:00+08:00"
   },
   {
     "event_id": "evt-003",
-    "event_type": "transfer.confirmed",
+    "event_type": "allocation.drafted",
+    "aggregate_id": "plan-round-001-v1",
+    "occurred_at": "2026-09-24T09:00:00+08:00"
+  },
+  {
+    "event_id": "evt-004",
+    "event_type": "allocation.approved",
+    "aggregate_id": "plan-round-001-v1",
+    "occurred_at": "2026-09-24T09:15:00+08:00"
+  },
+  {
+    "event_id": "evt-005",
+    "event_type": "allocation.published",
+    "aggregate_id": "plan-round-001-v1",
+    "occurred_at": "2026-09-24T09:30:00+08:00"
+  },
+  {
+    "event_id": "evt-006",
+    "event_type": "receipt.recorded",
     "aggregate_id": "transfer-001",
-    "occurred_at": "2026-09-23T10:00:00+08:00"
+    "occurred_at": "2026-09-24T10:00:00+08:00"
+  },
+  {
+    "event_id": "evt-007",
+    "event_type": "receipt.recorded",
+    "aggregate_id": "transfer-001",
+    "occurred_at": "2026-09-24T14:00:00+08:00"
   }
 ]

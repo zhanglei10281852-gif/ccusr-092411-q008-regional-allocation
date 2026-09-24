@@ -4,27 +4,49 @@
     "region",
     "allocation_round",
     "reserve_pool",
+    "plan",
+    "approval",
     "transfer",
-    "receipt"
+    "receipt",
+    "compensation"
   ],
-  "states": [
-    "simulated",
-    "draft",
-    "published",
-    "confirmed",
-    "dispatched",
-    "arrived",
-    "compensating"
-  ],
+  "states": {
+    "round": ["open", "closed", "finalized"],
+    "plan": ["simulated", "draft", "published", "superseded"],
+    "transfer": ["planned", "confirmed", "dispatched", "arrived", "compensating", "cancelled"],
+    "compensation": ["pending", "settled", "cancelled"]
+  },
   "event_types": [
+    "region.registered",
     "round.opened",
+    "round.closed",
+    "round.finalized",
+    "request.submitted",
+    "intransit.registered",
+    "allocation.simulated",
+    "allocation.drafted",
+    "allocation.approved",
+    "allocation.rejected",
     "allocation.published",
-    "transfer.confirmed",
-    "transfer.dispatched",
+    "transfer.created",
+    "transfer.cancelled",
+    "transfer.diverted",
+    "compensation.created",
+    "compensation.settled",
+    "reserve.used",
+    "reserve.refunded",
+    "reserve.replenished",
     "receipt.recorded"
   ],
+  "allocation_rounds": [
+    "baseline",
+    "contract",
+    "historical_share"
+  ],
+  "receipt_policy": "确认->装运->到达 顺序推进；数量单调不减；迟到回执按 happened_at 真实时间归档但状态不倒退；command_id 幂等，重试不重复扣配额",
+  "emergency_policy": "常规轮次结束后的紧急需求只能动用保留池，或经授权挤占未发运额度，并为被挤占方生成可追踪补偿优先级",
+  "version_policy": "发布后的规则以新版本追加；旧版本仅未确认、未挤占的额度可回收，已发运继续兑现",
   "time_policy": "ISO 8601 with timezone",
   "identifier_policy": "业务标识在同一类型内唯一",
-  "version_policy": "发布后的规则以新版本追加"
+  "quantity_policy": "货源与发运按毛吨计，底线/合同/申请按送达净吨计；毛额 = 净额 / (1 - 损耗率)"
 }
-
