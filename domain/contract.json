@@ -2,29 +2,72 @@
   "project": "跨区域保供调拨",
   "entities": [
     "region",
+    "customer",
     "allocation_round",
     "reserve_pool",
     "transfer",
-    "receipt"
+    "receipt",
+    "plan_version",
+    "approval",
+    "compensation"
   ],
   "states": [
     "simulated",
     "draft",
+    "open",
     "published",
+    "closed",
     "confirmed",
     "dispatched",
     "arrived",
-    "compensating"
+    "compensating",
+    "compensated",
+    "superseded"
   ],
   "event_types": [
     "round.opened",
     "allocation.published",
     "transfer.confirmed",
     "transfer.dispatched",
-    "receipt.recorded"
+    "receipt.recorded",
+    "plan.simulated",
+    "round.closed",
+    "reserve.released",
+    "quota.preempted",
+    "compensation.granted",
+    "compensation.settled",
+    "reserve.replenished"
   ],
   "time_policy": "ISO 8601 with timezone",
   "identifier_policy": "业务标识在同一类型内唯一",
-  "version_policy": "发布后的规则以新版本追加"
+  "version_policy": "发布后的规则以新版本追加",
+  "transfer_lifecycle": ["published", "confirmed", "dispatched", "arrived"],
+  "receipt_policy": "迟到回执按真实发生时间登记，状态投影只进不退",
+  "versions": [
+    {
+      "version": 1,
+      "event_types": [
+        "round.opened",
+        "allocation.published",
+        "transfer.confirmed",
+        "transfer.dispatched",
+        "receipt.recorded"
+      ],
+      "states": ["simulated", "draft", "published", "confirmed", "dispatched", "arrived", "compensating"]
+    },
+    {
+      "version": 2,
+      "event_types": [
+        "plan.simulated",
+        "round.closed",
+        "reserve.released",
+        "quota.preempted",
+        "compensation.granted",
+        "compensation.settled",
+        "reserve.replenished"
+      ],
+      "states": ["open", "closed", "compensated", "superseded"],
+      "note": "紧急保供：保留池动用、授权挤占、补偿优先级与模拟版本"
+    }
+  ]
 }
-
