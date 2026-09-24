@@ -1,0 +1,30 @@
+{
+  "project": "跨区域保供调拨",
+  "entities": [
+    "region",
+    "allocation_round",
+    "reserve_pool",
+    "transfer",
+    "receipt"
+  ],
+  "states": [
+    "simulated",
+    "draft",
+    "published",
+    "confirmed",
+    "dispatched",
+    "arrived",
+    "compensating"
+  ],
+  "event_types": [
+    "round.opened",
+    "allocation.published",
+    "transfer.confirmed",
+    "transfer.dispatched",
+    "receipt.recorded"
+  ],
+  "time_policy": "ISO 8601 with timezone",
+  "identifier_policy": "业务标识在同一类型内唯一",
+  "version_policy": "发布后的规则以新版本追加"
+}
+

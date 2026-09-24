@@ -1,0 +1,10 @@
+[project]
+name = "ccusr-regional-allocation"
+version = "0.1.0"
+description = "区域底线、保留池、调拨轮次与运输回执的领域资料"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"
+
